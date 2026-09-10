@@ -184,7 +184,7 @@ function App(){
 function Menu({onPlay,onRules,onLeaderboard,onSettings,stats}){
   return <main className="menu screen">
     <div className="motif">✦</div>
-    <p className="eyebrow">A TRADITIONAL SOUTH INDIAN GAME</p>
+    <p className="eyebrow">A TRADITIONAL SOUTH INDIAN GAME <span style={{background:"#6f3f27",color:"#fff",padding:"2px 8px",borderRadius:"10px",fontSize:"10px",marginLeft:"6px"}}>v1.1.0</span></p>
     <h1>ANCHANGAL</h1><div className="subtitle">FIVE STONES</div>
     <p className="tagline">Skill · Timing · Precision</p>
     <div className="hero-stones">{[0,1,2,3,4].map(i=><div className="stone hero" key={i} style={{"--i":i}}/>)}</div>
@@ -194,7 +194,7 @@ function Menu({onPlay,onRules,onLeaderboard,onSettings,stats}){
       <button onClick={onLeaderboard}><Trophy size={18}/> LEADERBOARD <span className="best">{stats.best}</span></button>
       <button onClick={onSettings}><Settings size={18}/> SETTINGS</button>
     </div>
-    <p className="tiny">Best score: {stats.best} · Games: {stats.games}</p>
+    <p className="tiny">Best score: {stats.best} · Games: {stats.games} · v1.1.0</p>
   </main>
 }
 
@@ -332,7 +332,7 @@ function SettingsModal({sound,setSound,stats,setStats,onClose}){
 
         <div style={{background:"#f3e4cf",padding:"16px 20px",borderRadius:"14px"}}>
           <strong style={{display:"block",fontSize:"15px",color:"#4e3020"}}>About Anchangal</strong>
-          <small style={{color:"#7c6754",display:"block",marginTop:"4px"}}>Version 1.0.0 Desktop App · Traditional South Indian Five Stones Game</small>
+          <small style={{color:"#7c6754",display:"block",marginTop:"4px"}}>Version 1.1.0 Desktop App · Traditional South Indian Five Stones Game</small>
         </div>
       </div>
 
