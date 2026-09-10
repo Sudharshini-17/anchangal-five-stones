@@ -57,3 +57,12 @@ npm run dist
 ```
 
 The output executables will be generated in the `release/` folder.
+
+---
+
+## 📜 Version History & Release Differences
+
+| Version | Release Date | Key Features & Changes | Links & Diff |
+| :--- | :--- | :--- | :--- |
+| **`v1.0.0`** | 2026-09-10 | • Initial Desktop Executable Release<br>• Full 8-stage game progression<br>• Dedicated Leaderboard & Settings screens<br>• Single-player & 4-player support | [📦 Download .exe](https://drive.google.com/file/d/1t-jAJNS94lB3L2_CRFSCowf9xGDw2rs9/view?usp=drive_link) \| [🏷️ Tag v1.0.0](https://github.com/Sudharshini-17/anchangal-five-stones/releases/tag/v1.0.0) |
+
