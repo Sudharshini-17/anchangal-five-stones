@@ -64,6 +64,7 @@ The output executables will be generated in the `release/` folder.
 
 | Version | Release Date | Key Features & Changes | Links & Diff |
 | :--- | :--- | :--- | :--- |
+| **`v1.2.0`** | 2026-09-10 | • Added **Stage Selector / Practice Mode** (choose starting Stage 1-8)<br>• Updated `v1.2.0` Badge & Settings Branding<br>• Enhanced multi-stage navigation & player setup | [🔀 Compare v1.1.0...v1.2.0](https://github.com/Sudharshini-17/anchangal-five-stones/compare/v1.1.0...v1.2.0) \| [🏷️ Tag v1.2.0](https://github.com/Sudharshini-17/anchangal-five-stones/releases/tag/v1.2.0) |
 | **`v1.1.0`** | 2026-09-10 | • Added `v1.1.0` Version Badge on Main Menu<br>• Enhanced Settings UI and version branding<br>• Optimized production React bundle & Electron config | [🔀 Compare v1.0.0...v1.1.0](https://github.com/Sudharshini-17/anchangal-five-stones/compare/v1.0.0...v1.1.0) \| [🏷️ Tag v1.1.0](https://github.com/Sudharshini-17/anchangal-five-stones/releases/tag/v1.1.0) |
 | **`v1.0.0`** | 2026-09-10 | • Initial Desktop Executable Release<br>• Full 8-stage game progression<br>• Dedicated Leaderboard & Settings screens<br>• Single-player & 4-player support | [📦 Download .exe](https://drive.google.com/file/d/1t-jAJNS94lB3L2_CRFSCowf9xGDw2rs9/view?usp=drive_link) \| [🏷️ Tag v1.0.0](https://github.com/Sudharshini-17/anchangal-five-stones/releases/tag/v1.0.0) |
 

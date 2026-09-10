@@ -55,9 +55,9 @@ function App(){
     setActive(null); setAirborne(false); setPicked([]); setMessage(""); setPaused(false);
   }
 
-  function startGame(){
-    const ps=Array.from({length:playerCount},(_,i)=>({name:`Player ${i+1}`,stage:0,score:0}));
-    setPlayers(ps); setCurrentPlayer(0); setStage(0); setScore(0); setMistakes(0); setCatches(0); setPerfect(0);
+  function startGame(startFromStage = 0){
+    const ps=Array.from({length:playerCount},(_,i)=>({name:`Player ${i+1}`,stage:startFromStage,score:0}));
+    setPlayers(ps); setCurrentPlayer(0); setStage(startFromStage); setScore(0); setMistakes(0); setCatches(0); setPerfect(0);
     resetStage(); setScreen("game");
   }
 
@@ -184,7 +184,7 @@ function App(){
 function Menu({onPlay,onRules,onLeaderboard,onSettings,stats}){
   return <main className="menu screen">
     <div className="motif">✦</div>
-    <p className="eyebrow">A TRADITIONAL SOUTH INDIAN GAME <span style={{background:"#6f3f27",color:"#fff",padding:"2px 8px",borderRadius:"10px",fontSize:"10px",marginLeft:"6px"}}>v1.1.0</span></p>
+    <p className="eyebrow">A TRADITIONAL SOUTH INDIAN GAME <span style={{background:"#6f3f27",color:"#fff",padding:"2px 8px",borderRadius:"10px",fontSize:"10px",marginLeft:"6px"}}>v1.2.0</span></p>
     <h1>ANCHANGAL</h1><div className="subtitle">FIVE STONES</div>
     <p className="tagline">Skill · Timing · Precision</p>
     <div className="hero-stones">{[0,1,2,3,4].map(i=><div className="stone hero" key={i} style={{"--i":i}}/>)}</div>
@@ -194,19 +194,35 @@ function Menu({onPlay,onRules,onLeaderboard,onSettings,stats}){
       <button onClick={onLeaderboard}><Trophy size={18}/> LEADERBOARD <span className="best">{stats.best}</span></button>
       <button onClick={onSettings}><Settings size={18}/> SETTINGS</button>
     </div>
-    <p className="tiny">Best score: {stats.best} · Games: {stats.games} · v1.1.0</p>
+    <p className="tiny">Best score: {stats.best} · Games: {stats.games} · v1.2.0</p>
   </main>
 }
 
 function Setup({playerCount,setPlayerCount,onStart,onBack}){
+  const [selectedStage, setSelectedStage] = useState(0);
+
   return <main className="setup screen">
     <button className="icon-btn" onClick={onBack}><Home size={20}/></button>
     <div className="card setup-card">
-      <p className="eyebrow">GET READY</p><h2>Choose Players</h2>
-      <p className="muted">Single player is fully skill-based. Multiplayer turns share the same eight-stage progression.</p>
-      <div className="player-grid">{[1,2,3,4].map(n=><button className={playerCount===n?"selected":""} onClick={()=>setPlayerCount(n)} key={n}>{n}<small>{n===1?"PLAYER":"PLAYERS"}</small></button>)}</div>
-      <div className="preview"><div className="mini-stones">{[0,1,2,3,4].map(i=><div className="stone" key={i}/>)}</div><strong>5 STONES · 8 STAGES</strong><span>Complete every stage to win.</span></div>
-      <button className="primary wide" onClick={onStart}>START GAME <ChevronRight size={19}/></button>
+      <p className="eyebrow">GET READY</p><h2>Game Setup</h2>
+      <p className="muted">Select player count and starting stage to begin your challenge.</p>
+      
+      <div style={{margin:"15px 0 5px"}}>
+        <span style={{fontSize:"11px",fontWeight:800,letterSpacing:"0.12em",color:"#8b5938"}}>PLAYER COUNT</span>
+        <div className="player-grid" style={{margin:"8px 0 18px"}}>{[1,2,3,4].map(n=><button className={playerCount===n?"selected":""} onClick={()=>setPlayerCount(n)} key={n}>{n}<small>{n===1?"PLAYER":"PLAYERS"}</small></button>)}</div>
+      </div>
+
+      <div style={{margin:"10px 0 15px"}}>
+        <span style={{fontSize:"11px",fontWeight:800,letterSpacing:"0.12em",color:"#8b5938"}}>STARTING STAGE</span>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:"8px",marginTop:"8px"}}>
+          {STAGES.map((st,idx)=><button key={idx} className={selectedStage===idx?"selected":""} onClick={()=>setSelectedStage(idx)} style={{padding:"8px 4px",fontSize:"12px",display:"flex",flexDirection:"column",alignItems:"center"}}>
+            <strong>S{idx+1}</strong>
+            <small style={{fontSize:"9px",opacity:0.85}}>{st.short}</small>
+          </button>)}
+        </div>
+      </div>
+
+      <button className="primary wide" onClick={()=>onStart(selectedStage)}>START STAGE {selectedStage+1} <ChevronRight size={19}/></button>
     </div>
   </main>
 }
@@ -332,7 +348,7 @@ function SettingsModal({sound,setSound,stats,setStats,onClose}){
 
         <div style={{background:"#f3e4cf",padding:"16px 20px",borderRadius:"14px"}}>
           <strong style={{display:"block",fontSize:"15px",color:"#4e3020"}}>About Anchangal</strong>
-          <small style={{color:"#7c6754",display:"block",marginTop:"4px"}}>Version 1.1.0 Desktop App · Traditional South Indian Five Stones Game</small>
+          <small style={{color:"#7c6754",display:"block",marginTop:"4px"}}>Version 1.2.0 Desktop App · Traditional South Indian Five Stones Game</small>
         </div>
       </div>
 
